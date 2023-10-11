@@ -17,6 +17,7 @@ turtles = []
 
 for i in range(num_turtles):
     t = turtle.Turtle()
+    t.shape("turtle")
     t.penup()
     t.goto(*random_position())
     turtles.append(t)
