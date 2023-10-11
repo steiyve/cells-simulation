@@ -20,7 +20,13 @@ def creat_new_turtle():
 	repete = len(turtles)
 	for i in range(repete*2):
 		t = turtle.Turtle()
+		#mutation
+		if random.randint(0,20) == 20:
+			t.name = f"mutated"
+			if random.randint(0,2) == 2:
+				t.name = f"mutated-infectious"
 		t.penup()
+		
 		t.goto(*random_position())
 		turtles.append(t)
 
