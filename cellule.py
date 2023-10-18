@@ -76,7 +76,6 @@ while True:
 	if len(turtles) >= 300:
 		break
 
- 
 
 
 		
