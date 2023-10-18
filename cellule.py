@@ -61,6 +61,7 @@ while True:
 				creat_new_turtle()
 				print("penis")
 
+		
 		elif t.name == "mutated-infectious":
 			print("penis")
 			for i in turtles:
@@ -70,8 +71,11 @@ while True:
 						i.color("black")
 						i.name = f"dead"
 						print("dead")
-#halle
- 
+	
+	#verifier la taille de la population
+	if len(turtles) >= 300:
+		break
+
 
 
 		
