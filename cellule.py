@@ -70,7 +70,7 @@ while True:
 						i.color("black")
 						i.name = f"dead"
 						print("dead")
-
+#halle
  
 
 
