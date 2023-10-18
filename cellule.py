@@ -1,20 +1,20 @@
 import turtle
-import math
 import random
 
-
+#fonction qui retourne une position
 def random_position():
-    x = random.randint(-400, 400)
-    y = random.randint(-400, 400)
+    x = random.randint(-600, 600)
+    y = random.randint(-600, 600)
     return x, y
 
 
 bg = turtle.Screen()
-bg.bgcolor("black")
 turtles = []
 gen = 0
 
+#creer les premiere tortue
 for i in range(2):
+	        #attribut de la tourtue
 		t = turtle.Turtle()
 		t.color("green")
 		t.shape("circle")
@@ -32,15 +32,18 @@ for i in range(2):
 		t.goto(0,0)
 		turtles.append(t)
 
-def creat_new_turtle():
+#duplication de la cellule
+def mitose():
 	global turtles
 	for i in range(2):
+		#attribut de la fonction
 		t = turtle.Turtle()
 		t.color("green")
 		t.shape("circle")
 		t.begin_fill()
 		t.speed(0)
 		t.name = f"normal"
+		
 		#mutation
 		if random.randint(0,20) == 20:
 			t.color("red")
@@ -58,9 +61,10 @@ while True:
 	for t in turtles:
 		if t.name == "normal" or t.name == "mutated":
 			if gen % 10 == 0:
-				creat_new_turtle()
+				mitose()
 				print("penis")
 
+		
 		elif t.name == "mutated-infectious":
 			print("penis")
 			for i in turtles:
@@ -70,8 +74,11 @@ while True:
 						i.color("black")
 						i.name = f"dead"
 						print("dead")
+	
+	#verifier la taille de la population
+	if len(turtles) >= 300:
+		break
 
- 
 
 
 		
