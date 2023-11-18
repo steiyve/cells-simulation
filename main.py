@@ -14,23 +14,39 @@ gen = 0
 
 #creer les premiere tortue
 for i in range(2):
-	        #attribut de la tourtue
-		t = turtle.Turtle()
-		t.color("green")
-		t.shape("circle")
-		t.begin_fill()
-		t.name = f"normal"
-		#mutation
-		if random.randint(0,20) == 20:
-			t.color("red")
-			t.name = f"mutated"
-			if random.randint(0,2) == 2:
-				t.name = f"mutated-infectious"
+	#attribut de la tourtue
+	t = turtle.Turtle()
+	t.color("green")
+	t.shape("circle")
+	t.begin_fill()
+	t.name = f"normal"
+	#mutation
+	chance = random.randint(0,20)
 
-		t.penup()
-		
-		t.goto(0,0)
-		turtles.append(t)
+	if chance == 20:
+		t.color("red")
+		t.name = f"mutated"
+
+		maladie = random.randint(0,3)
+		if maladie == 1:
+			t.name = f"cancer"
+			type_cancer = random.randint(0,100)
+			if type_cancer % 10 == 0:
+				t.name = f"leucemie"
+				t.color("white")
+
+			if 0 <= type_cancer <= 2:
+				t.name = f"melanome"
+				t.color("blue")
+
+		if maladie == 2:
+			t.name = f""
+			t.color("blue")
+
+	t.penup()
+	
+	t.goto(0,0)
+	turtles.append(t)
 
 #duplication de la cellule
 def mitose():
@@ -44,12 +60,27 @@ def mitose():
 		t.speed(0)
 		t.name = f"normal"
 		
-		#mutation
-		if random.randint(0,20) == 20:
-			t.color("red")
-			t.name = f"mutated"
-			if random.randint(0,2) == 2:
-				t.name = f"mutated-infectious"
+	chance = random.randint(0,20)
+
+	if chance == 20:
+		t.color("red")
+		t.name = f"mutated"
+
+		maladie = random.randint(0,3)
+		if maladie == 1:
+			type_cancer = random.randint(0,100)
+			if type_cancer % 10 == 0:
+				t.name = f"leucemie"
+				t.color("white")
+
+			if 0 <= type_cancer <= 2:
+				t.name = f"melanome"
+				t.color("blue")
+
+		if maladie == 2:
+			t.name = f""
+			t.color("blue")
+		
 		t.penup()
 		print(t.name)
 
@@ -57,10 +88,9 @@ def mitose():
 		turtles.append(t)
 
 while True:
-
 	for t in turtles:
 		#si tortue est normal ou mutante non infectieuse
-		if t.name == "normal" or t.name == "mutated":
+		if t.name == "normal" or t.name == "leucemie" or t.name == "melanome":
 			#tout les 10 gen
 			if gen % 10 == 0:
 				mitose()
