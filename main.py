@@ -3,12 +3,13 @@ import random
 
 #fonction qui retourne une position
 def random_position():
-    x = random.randint(-900, 900)
-    y = random.randint(-450, 450)
+    x = random.randint(-700, 700)
+    y = random.randint(-350, 350)
     return x, y
 
 
 bg = turtle.Screen()
+bg.bgcolor("black")
 turtles = []
 gen = 0
 
@@ -31,7 +32,7 @@ for i in range(2):
 		if maladie == 1:
 			t.name = f"cancer"
 			type_cancer = random.randint(0,100)
-			if type_cancer % 10 == 0:
+			if type_cancer >= 10:
 				t.name = f"leucemie"
 				t.color("white")
 
@@ -66,14 +67,14 @@ def mitose():
 		t.color("red")
 		t.name = f"mutated"
 
-		maladie = random.randint(0,3)
+		maladie = random.randint(1,1)
 		if maladie == 1:
 			type_cancer = random.randint(0,100)
-			if type_cancer % 10 == 0:
+			if type_cancer  <= 10:
 				t.name = f"leucemie"
 				t.color("white")
 
-			if 0 <= type_cancer <= 2:
+			if type_cancer <= 2:
 				t.name = f"melanome"
 				t.color("blue")
 
@@ -96,11 +97,11 @@ while True:
 				mitose()
 
 		
-		elif t.name == "mutated-infectious":
+		if t.name == "mutated" or t.name == "cancer" or t.name == "melanome" or t.name == "leucemie" or t.name == "schtouph":
 			for i in turtles:
 				#si tortue est normal ou mutante ou mutante infectieuse
 				#peit mourrir
-				if i.name == "normal" or t.name == "mutated" or t.name == "mutated-infectious":
+				if i.name == "normal" or i.name == "melanome" or i.name == "leucemie" or i.name == "schtouph":
 					if random.randint(0,3) == 2:
 						i.color("black")
 						i.name = f"dead"
