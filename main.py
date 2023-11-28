@@ -3,8 +3,8 @@ import random
 
 #fonction qui retourne une position
 def random_position():
-    x = random.randint(-600, 600)
-    y = random.randint(-600, 600)
+    x = random.randint(-900, 900)
+    y = random.randint(-450, 450)
     return x, y
 
 
@@ -40,7 +40,7 @@ for i in range(2):
 				t.color("blue")
 
 		if maladie == 2:
-			t.name = f""
+			t.name = f"schtouph"
 			t.color("blue")
 
 	t.penup()
@@ -78,19 +78,19 @@ def mitose():
 				t.color("blue")
 
 		if maladie == 2:
-			t.name = f""
+			t.name = f"schtouph"
 			t.color("blue")
 		
-		t.penup()
 		print(t.name)
 
-		t.goto(*random_position())
-		turtles.append(t)
+	t.penup()
+	t.goto(*random_position())
+	turtles.append(t)
 
 while True:
 	for t in turtles:
 		#si tortue est normal ou mutante non infectieuse
-		if t.name == "normal" or t.name == "leucemie" or t.name == "melanome":
+		if t.name == "normal" or t.name == "mutated" or t.name == "cancer" or t.name == "melanome" or t.name == "leucemie" or t.name == "schtouph":
 			#tout les 10 gen
 			if gen % 10 == 0:
 				mitose()
